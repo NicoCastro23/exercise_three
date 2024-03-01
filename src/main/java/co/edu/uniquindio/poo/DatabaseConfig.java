@@ -4,7 +4,7 @@ public class DatabaseConfig {
         private String username;
         private String password;
         private String host;
-        private String charset;
+        private Charset charset;
         private int timeout;
         private String sslCertificates;
         private int port;
@@ -25,7 +25,7 @@ public class DatabaseConfig {
             return host;
         }
     
-        public String getCharset() {
+        public Charset getCharset() {
             return charset;
         }
     
@@ -49,6 +49,7 @@ public class DatabaseConfig {
             return new BuilderDataBase();
             
         }
+
         // Clase Builder para construir la configuración de la base de datos de manera personalizada.
         public static class BuilderDataBase {
             private DatabaseConfig config = new DatabaseConfig();
@@ -68,7 +69,7 @@ public class DatabaseConfig {
                 return this;
             }
     
-            public BuilderDataBase setCharset(String charset) {
+            public BuilderDataBase setCharset(Charset charset) {
                 config.charset = charset;
                 return this;
             }

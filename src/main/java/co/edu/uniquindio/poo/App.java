@@ -6,7 +6,7 @@ public class App {
                                         .setUsername("usuario")
                                         .setPassword("contraseña")
                                         .setHost("localhost")
-                                        .setCharset("UTF-8")
+                                        .setCharset(Charset.UTF_8)
                                         .setTimeout(30)
                                         .setPort(3306)
                                         .setDatabaseName("mi_basededatos")
