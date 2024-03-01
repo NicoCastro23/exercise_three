@@ -11,7 +11,11 @@ public class DatabaseConfiguration {
         private String databaseName;
     
         // Constructor privado para evitar instanciación directa
-        private DatabaseConfiguration() {}
+        private DatabaseConfiguration(String username, String password, String host) {
+            this.username = username;
+            this.password = password;
+            this.host = host;
+        }
 
         // Getters and setters 
         public String getUsername() {
@@ -46,35 +50,26 @@ public class DatabaseConfiguration {
             return databaseName;
         }
 
-        public static BuilderDataBase Builder(){
-            return new BuilderDataBase();
+        public static BuilderDataBase Builder(String username, String password, String host){
+            return new BuilderDataBase(username, password, host);
             
         }
 
         // Clase Builder para construir la configuración de la base de datos de manera personalizada.
-        public static class BuilderDataBase {
-            private DatabaseConfiguration config = new DatabaseConfiguration();
-    
-            public BuilderDataBase setUsername(String username) {
-                config.username = username;
-                return this;
+            public static class BuilderDataBase {
+
+            private DatabaseConfiguration config;
+
+            // Constructor del Builder que toma los atributos obligatorios
+            private BuilderDataBase(String username, String password, String host) {
+            config = new DatabaseConfiguration(username, password, host);
             }
-    
-            public BuilderDataBase setPassword(String password) {
-                config.password = password;
-                return this;
-            }
-    
-            public BuilderDataBase setHost(String host) {
-                config.host = host;
-                return this;
-            }
-    
+            
             public BuilderDataBase setCharset(Charset charset) {
                 config.charset = charset;
                 return this;
             }
-    
+
             public BuilderDataBase setTimeout(int timeout) {
                 config.timeout = timeout;
                 return this;
@@ -100,6 +95,13 @@ public class DatabaseConfiguration {
                 return config;
             }
      }
+
+        @Override
+        public String toString() {
+            return "DatabaseConfiguration [username=" + username + ", password=" + password + ", host=" + host +", charset=" + charset + ", timeout=" + timeout + ", sslCertificates="
+                    + sslCertificates + ", port=" + port + ", databaseName=" + databaseName + "]";
+        }
+     
  }
     
 
