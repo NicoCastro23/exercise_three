@@ -2,12 +2,14 @@ package co.edu.uniquindio.poo;
 
 public class App {
         public static void main(String[] args) {
-            DatabaseConfig config = DatabaseConfig.Builder()
+            //Creacion del injetos utilizando el builder de databaseconfigurations
+            DatabaseConfiguration config = DatabaseConfiguration.Builder()
                                         .setUsername("usuario")
                                         .setPassword("contraseña")
                                         .setHost("localhost")
                                         .setCharset(Charset.UTF_8)
                                         .setTimeout(30)
+                                        .setSslCertificates(true)
                                         .setPort(3306)
                                         .setDatabaseName("mi_basededatos")
                                         .build();

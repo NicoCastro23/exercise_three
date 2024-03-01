@@ -14,7 +14,7 @@ public class DatabaseConnection {
     }
 
     // Método para conectar a la base de datos
-    public void connect(DatabaseConfig config) {
+    public void connect(DatabaseConfiguration config) {
         System.out.println("Conectando a la base de datos...");
     }
 

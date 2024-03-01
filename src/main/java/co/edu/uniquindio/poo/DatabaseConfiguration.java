@@ -1,18 +1,19 @@
 package co.edu.uniquindio.poo;
 
-public class DatabaseConfig {
+public class DatabaseConfiguration {
         private String username;
         private String password;
         private String host;
         private Charset charset;
         private int timeout;
-        private String sslCertificates;
+        private boolean sslCertificates;
         private int port;
         private String databaseName;
     
         // Constructor privado para evitar instanciación directa
-        private DatabaseConfig() {}
-    
+        private DatabaseConfiguration() {}
+
+        // Getters and setters 
         public String getUsername() {
             return username;
         }
@@ -33,7 +34,7 @@ public class DatabaseConfig {
             return timeout;
         }
     
-        public String getSslCertificates() {
+        public boolean getSslCertificates() {
             return sslCertificates;
         }
     
@@ -52,7 +53,7 @@ public class DatabaseConfig {
 
         // Clase Builder para construir la configuración de la base de datos de manera personalizada.
         public static class BuilderDataBase {
-            private DatabaseConfig config = new DatabaseConfig();
+            private DatabaseConfiguration config = new DatabaseConfiguration();
     
             public BuilderDataBase setUsername(String username) {
                 config.username = username;
@@ -79,7 +80,7 @@ public class DatabaseConfig {
                 return this;
             }
     
-            public BuilderDataBase setSslCertificates(String sslCertificates) {
+            public BuilderDataBase setSslCertificates(boolean sslCertificates) {
                 config.sslCertificates = sslCertificates;
                 return this;
             }
@@ -95,7 +96,7 @@ public class DatabaseConfig {
             }
     
             // Método para construir la configuración
-            public DatabaseConfig build() {
+            public DatabaseConfiguration build() {
                 return config;
             }
      }
